@@ -1,0 +1,20 @@
+Big O - worst-case scenario
+3n^2 + n + 3 + 1
+3n^2 is worst-case scenario
+
+Nested for loops aren't ideal
+
+Logarithmic runtime examples: binary search trees
+
+Array: indexed list of values stored in a continuous block of memory
+Adding/deleting an item from an array is an example of a linear runtime (O(n)), don't have memory available, we'd have to copy it
+Accessing an element from an array is an example of a constant runtime
+
+Python is written in C 
+
+Linked list is composed of many nodes. Nodes are composed of a value and a pointer to next node in list
+- Linked lists don't need to be contiguous
+- Inserting new head is fast: created new node, it's the new head, constant runtime
+- Deleting head is similar
+- Searching for a node takes a long time, as there is no order requirement, a linear search
+- Check if is tail by seeing if pointer points to None
