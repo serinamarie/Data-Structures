@@ -20,3 +20,5 @@ Linked list is composed of many nodes. Nodes are composed of a value and a point
 - Check if is tail by seeing if pointer points to None
 
 Queues are FIFO, and stacks ares LIFO
+
+Big O cheatsheet: https://www.bigocheatsheet.com/
