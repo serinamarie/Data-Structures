@@ -18,3 +18,5 @@ Linked list is composed of many nodes. Nodes are composed of a value and a point
 - Deleting head is similar
 - Searching for a node takes a long time, as there is no order requirement, a linear search
 - Check if is tail by seeing if pointer points to None
+
+Queues are FIFO, and stacks ares LIFO
