@@ -98,13 +98,17 @@ class LinkedList:
 
         else:
             current_node = self.head
+
             while current_node is not None:
+
                 # check if value input is same as current node
                 if current_node.get_value() == value:
                     return True
+
                 else:
                     # move on to next node
                     current_node = current_node.get_next()
+                    
             else:
                 # value not in LL
                 return False
@@ -131,5 +135,5 @@ class LinkedList:
             
             # move on to next node
             current_node = current_node.get_next()
-            
+
         return current_max
