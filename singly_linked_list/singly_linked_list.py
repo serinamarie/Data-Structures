@@ -59,16 +59,34 @@ class LinkedList:
             return value
     
     def remove_tail(self):
-        if self.head is None:
+        # if empty
+        if not self.head:
             return None
+        
+        # else set head to current
+        current = self.head
 
-        else:
-            value = self.tail.get_value()
-            self.tail.delete()
-            self.length -= 1
-            return value
+        # set it to previous as well
+        previous = current
 
+        # then while there are nodes afterward
+        while current.get_next() != None:
 
+            # set the current head to previous
+            previous = current
+
+            # change the current node to the next node, iterate
+            current = current.get_next()
+        # once the next node is none, set the current node to previous, and add none after it
+        previous.set_next(None)
+
+        # set that previous value to the new tail
+        self.tail = previous
+
+        # return the current value
+        return current.get_value()
+
+    
     def contains(self, value):
         if self.length == 0:
             return False
