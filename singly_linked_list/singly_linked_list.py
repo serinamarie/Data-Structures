@@ -53,22 +53,46 @@ class LinkedList:
 
         # list with +2 nodes
         else:
-            value = self.head_get_value()
+            value = self.head.get_value()
             self.head = self.head.get_next()
             self.length -= 1
             return value
     
     def remove_tail(self):
-        pass
+        if self.head is None:
+            return None
 
-    def contains():
-        pass
+        else:
+            value = self.tail.get_value()
+            self.tail.delete()
+            self.length -= 1
+            return value
 
-    def get_max():
+
+    def contains(self, value):
+        if self.length == 0:
+            return False
+
+        else:
+            current_node = self.head
+            while current_node is not None:
+                if current_node.get_value() == value:
+                    return True
+                else:
+                    current_node = current_node.get_next()
+            else:
+                return False
+
+    def get_max(self):
+        # empty list
+        if self.head is None:
+            return None
+        # non-empty list
         # iterate through all elements
         current_node = self.head
         current_max = self.head.get_value()
         while current_node is not None:
             if current_node.get_value() > current_max:
-                current_max = current_node
+                current_max = current_node.get_value()
             current_node = current_node.get_next()
+        return current_max
