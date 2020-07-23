@@ -40,9 +40,11 @@ class LinkedList:
         self.length += 1
     
     def remove_head(self):
+
         # empty LL
         if self.head is None:
             return None
+
         # list with 1 node
         elif self.length == 1:
             value = self.head.get_value()
@@ -59,6 +61,7 @@ class LinkedList:
             return value
     
     def remove_tail(self):
+
         # if empty
         if not self.head:
             return None
@@ -88,29 +91,45 @@ class LinkedList:
 
     
     def contains(self, value):
+
+        # if empty LL
         if self.length == 0:
             return False
 
         else:
             current_node = self.head
             while current_node is not None:
+                # check if value input is same as current node
                 if current_node.get_value() == value:
                     return True
                 else:
+                    # move on to next node
                     current_node = current_node.get_next()
             else:
+                # value not in LL
                 return False
 
     def get_max(self):
+
         # empty list
         if self.head is None:
             return None
+
         # non-empty list
         # iterate through all elements
         current_node = self.head
+
+        # set max to first node
         current_max = self.head.get_value()
+
         while current_node is not None:
+
+            # search for higher values
             if current_node.get_value() > current_max:
+                # set new max
                 current_max = current_node.get_value()
+            
+            # move on to next node
             current_node = current_node.get_next()
+            
         return current_max
