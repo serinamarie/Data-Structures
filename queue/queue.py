@@ -15,6 +15,7 @@ Stretch: What if you could only use instances of your Stack class to implement t
 """
 
 from linkedlistclass import LinkedList
+
 class Queue:
     def __init__(self):
         self.size = 0
@@ -49,7 +50,6 @@ class Queue:
     def dequeue(self):
         if self.size == 0:
             return None
-        
         else:
             self.size -= 1
             return self.storage.remove_tail()
