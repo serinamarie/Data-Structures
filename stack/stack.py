@@ -52,3 +52,8 @@ class Stack:
 
 
 
+# We have to shift other elements around when using an array, 
+# which can be computationally expensive. Changes to a linked list only affect
+# a few elements (nodes) in contrast. Drawbacks on a singly linked list for a stack are that we
+# need to iterate through the top of the stack down to the bottom if we want 
+# to remove something we added long ago.
