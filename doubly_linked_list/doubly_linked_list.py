@@ -58,7 +58,10 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
+        #
+        # add to head(node.get_value())
         pass
+        
         
     """
     Removes the input node from its current spot in the 
@@ -72,7 +75,14 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        # look at what comes before this node, grab the next node (current node),
+        # set to next node
+        node.prev.next = node.next
+        # look at what comes after node and set its previous pointer
+        # equal to node's previous pointer
+        node.next.prev = node.prev
+        self.length -= 1
+
 
     """
     Finds and returns the maximum value of all the nodes 

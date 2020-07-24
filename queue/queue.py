@@ -19,10 +19,13 @@ sys.path.append('./singly_linked_list')
 
 from singly_linked_list import LinkedList
 
+from math import ceil
+
 class Queue:
     def __init__(self):
         self.size = 0
         self.storage = []
+        
     
     def __len__(self):
         return self.size
@@ -61,3 +64,4 @@ class Queue:
 # a few elements (nodes) in contrast. Drawbacks on a singly linked list for a queue are that we
 # need to iterate through the front of the line to the back of the line if we want 
 # to remove something we just added. In the case of the queue, that is a benefit, though
+
