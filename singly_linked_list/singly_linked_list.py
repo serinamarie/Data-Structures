@@ -66,52 +66,49 @@ class LinkedList:
         if not self.head:
             return None
         
-        # else set head to current
-        current = self.head
+        elif self.head == self.tail:
+            value = self.tail.get_value()
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return value
+        
+        else:
 
-        # set it to previous as well
-        previous = current
+            # else set head to current
+            current = self.head
 
-        # then while there are nodes afterward
-        while current.get_next() != None:
+            # then while there are nodes afterward
+            while current.get_next() != self.tail:
 
-            # set the current head to previous
-            previous = current
+                # change the current node to the next node, iterate
+                current = current.get_next()
+            # once the next node is none, set the current node to previous, and add none after it
+            value = self.tail.get_value()
+            current.set_next(None)
 
-            # change the current node to the next node, iterate
-            current = current.get_next()
-        # once the next node is none, set the current node to previous, and add none after it
-        previous.set_next(None)
+            # set that previous value to the new tail
+            self.tail = current
+            self.length -= 1
 
-        # set that previous value to the new tail
-        self.tail = previous
-
-        # return the current value
-        return current.get_value()
+            # return the tail
+            return value
 
     
     def contains(self, value):
 
-        # if empty LL
-        if self.length == 0:
-            return False
+        current_node = self.head
 
-        else:
-            current_node = self.head
+        while current_node is not None:
 
-            while current_node is not None:
-
-                # check if value input is same as current node
-                if current_node.get_value() == value:
-                    return True
-
-                else:
-                    # move on to next node
-                    current_node = current_node.get_next()
-                    
-            else:
-                # value not in LL
-                return False
+            # check if value input is same as current node
+            if current_node.get_value() == value:
+                return True
+            # move on to next node
+            current_node = current_node.get_next()
+    
+        # value not in LL
+        return False
 
     def get_max(self):
 

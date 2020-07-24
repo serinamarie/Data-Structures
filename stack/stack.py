@@ -11,7 +11,11 @@ return elements in Last In First Out order.
    implementing a Stack?
 """
 
-from linkedlistclass import LinkedList
+import sys
+
+sys.path.append('./singly_linked_list')
+
+from singly_linked_list import LinkedList
 
 class Stack:
     def __init__(self):
@@ -56,4 +60,4 @@ class Stack:
 # which can be computationally expensive. Changes to a linked list only affect
 # a few elements (nodes) in contrast. Drawbacks on a singly linked list for a stack are that we
 # need to iterate through the top of the stack down to the bottom if we want 
-# to remove something we added long ago.
+# to remove something we added long ago. In the case of a stack, an array makes more sense.
