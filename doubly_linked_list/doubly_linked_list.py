@@ -166,7 +166,7 @@ class DoublyLinkedList:
             return
 
         # if it's the tail
-        elif input_node == self.tail:
+        elif node == self.tail:
 
             # remove it from the tail with a handy dandy function
             # the function will decrement the DLL 
@@ -183,49 +183,38 @@ class DoublyLinkedList:
 
         # move it to the front 
         self.add_to_head(input_node)
-   
-
-        # # if node is not the head or the tail
-        # else:
-
-        #     # store node value before deletion
-        #     input_node = node
-
-        #     # by calling the ListNode's delete method, 
-        #     # we can take the input_node out and connect its
-        #     # prev and next to each other like in Red Rover
-        #     node.delete()
-
-        #     # set the current head's prev to the input_node
-        #     input_node = self.head.prev
-
-        #     # # likewise, set the input_node's next to the current head before making 
-        #     # # the input_node the next head
-        #     # input_node.next = self.head
-
-        #     # make the input_node the new head
-        #     self.head = input_node
-        
+       
         
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
     """
-    # def move_to_end(self, node):
+    def move_to_end(self, node):
 
-    #     # if input node is already the tail, ignore
-    #     if node.value == self.tail:
-    #         return None
-    #     else: 
+        # store our node for future use before removal
+        input_node = node.value
 
-    #         # store our node to call upon it late
-    #         input_node = node.value
+        # if input node is already the tail, ignore
+        if node == self.tail:
+            return None
 
-    #         # remove the input node from its spot
-    #         node.delete()
+        # if it's the head
+        elif node == self.head:
 
-    #         # insert input node as the new tail
-    #         input_node.add_to_tail()
+            # remove it from the head with our function
+            self.remove_from_head()
+        
+        # if neither head nor tail
+        else:
+
+            # remove it with our delete function
+            node.delete()
+
+            # decrement
+            self.length -= 1
+
+        # move it to the front 
+        self.add_to_tail(input_node)
         
 
     """
