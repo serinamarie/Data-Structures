@@ -130,15 +130,14 @@ class DoublyLinkedList:
                 self.head = None
                 self.tail = None
 
-                return old_tail
 
             else:
 
                 # the value before the tail is now the new tail!
                 self.tail = self.tail.prev
 
-                # take a look at our removed tail
-                return old_tail
+            # take a look at our removed tail
+            return old_tail
             
     """
     Removes the input node from its current spot in the 
