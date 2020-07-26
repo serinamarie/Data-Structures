@@ -1,8 +1,10 @@
-"""
-Each ListNode holds a reference to its previous node
-as well as its next node in the List.
-"""
+
 class ListNode:
+
+    """Each ListNode holds a reference to its previous node
+    as well as its next node in the List.
+    """
+
     def __init__(self, value, prev=None, next=None):
         self.prev = prev
         self.value = value
@@ -14,25 +16,31 @@ class ListNode:
         if self.next:	
             self.next.prev = self.prev
             
-"""
-Our doubly-linked list class. It holds references to 
-the list's head and tail nodes.
-"""
+
 class DoublyLinkedList:
+
+    """Our doubly-linked list class. It holds references to 
+    the list's head and tail nodes.
+    """
+
     def __init__(self, node=None):
         self.head = node
         self.tail = node
         self.length = 1 if node is not None else 0
 
     def __len__(self):
+
+        """Returns the length of the list"""
+
         return self.length
     
-    """
-    Wraps the given value in a ListNode and inserts it 
-    as the new head of the list. Don't forget to handle 
-    the old head node's previous pointer accordingly.
-    """
+
     def add_to_head(self, value):
+
+        """Wraps the given value in a ListNode and inserts it 
+        as the new head of the list. Don't forget to handle 
+        the old head node's previous pointer accordingly.
+        """
 
         # wrap given value in ListNode and insert it as new head
         new_node = ListNode(value, next=self.head)
@@ -49,19 +57,19 @@ class DoublyLinkedList:
     
         else: 
 
-            # add the new node before the head
+            # first add the new node before the current head
             self.head.prev = new_node
 
-            # the new node is now the head!
+            # then set the new node to now be the head
             self.head = new_node
 
  
-    """
-    Removes the List's current head node, making the
-    current head's next node the new head of the List.
-    Returns the value of the removed Node.
-    """
     def remove_from_head(self):
+
+        """Removes the List's current head node, making the
+        current head's next node the new head of the List.
+        Returns the value of the removed Node.
+        """
 
         # decrement
         self.length -= 1
@@ -73,7 +81,7 @@ class DoublyLinkedList:
         
         else: 
 
-            # the current head is now the old_head
+            # store head value before removal
             old_head = self.head.value
 
             # if the DLL is of length 1
@@ -89,15 +97,16 @@ class DoublyLinkedList:
 
             # take a look at our removed head
             return old_head
-            
-    """
-    Wraps the given value in a ListNode and inserts it 
-    as the new tail of the list. Don't forget to handle 
-    the old tail node's next pointer accordingly.
-    """
+  
+    
     def add_to_tail(self, value):
 
-        # wrap given value in ListNode and insert it as new head
+        """Wraps the given value in a ListNode and inserts it 
+        as the new tail of the list. Don't forget to handle 
+        the old tail node's next pointer accordingly.
+        """
+
+        # wrap given value in ListNode and insert it as new tail
         new_node = ListNode(value, prev=self.tail)
 
         # increment
@@ -112,18 +121,19 @@ class DoublyLinkedList:
     
         else: 
 
-            # add the new node to the tail
+            # first add the new node after the current tail
             self.tail.next = new_node
 
-            # the new node is now the tail!
+            # then set the new node to now be the tail
             self.tail = new_node
+
             
-    """
-    Removes the List's current tail node, making the 
-    current tail's previous node the new tail of the List.
-    Returns the value of the removed Node.
-    """
     def remove_from_tail(self):
+
+        """Removes the List's current tail node, making the 
+        current tail's previous node the new tail of the List.
+        Returns the value of the removed Node.
+        """
 
         # decrement
         self.length -= 1
@@ -131,11 +141,11 @@ class DoublyLinkedList:
         # if empty DLL
         if self.head is None and self.tail is None:
 
-            return None
+            return
         
         else: 
 
-            # the current tail is now the old_tail
+            # store tail value before removal
             old_tail = self.tail.value
 
             # if the DLL is of length 1
@@ -152,17 +162,19 @@ class DoublyLinkedList:
             # take a look at our removed tail
             return old_tail
             
-    """
-    Removes the input node from its current spot in the 
-    List and inserts it as the new head node of the List.
-    """
+
     def move_to_front(self, node):
+
+        """Removes the input node from its current spot in the 
+        List and inserts it as the new head node of the List.
+        """
 
         # store node for use before removal
         input_node = node.value
 
         # if the node is the head, leave the head alone!
         if node == self.head:
+
             return
 
         # if it's the tail
@@ -181,10 +193,10 @@ class DoublyLinkedList:
             # we need to decrement it ourselves
             self.length -= 1
 
-        # move it to the front 
+        # add the stored input_node value to the head 
         self.add_to_head(input_node)
        
-        
+    
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
@@ -194,11 +206,12 @@ class DoublyLinkedList:
         # store our node for future use before removal
         input_node = node.value
 
-        # if input node is already the tail, leave the tail alone!
+        # if node is already the tail, leave the tail alone!
         if node == self.tail:
+
             return None
 
-        # if it's the head
+        # if the node is the head
         elif node == self.head:
 
             # remove it from the head with our function
@@ -207,13 +220,13 @@ class DoublyLinkedList:
         # if neither head nor tail
         else:
 
-            # remove it with our delete function
+            # remove it
             node.delete()
 
             # decrement
             self.length -= 1
 
-        # move it to the front 
+        # add the stored input_node value to the tail 
         self.add_to_tail(input_node)
         
 
@@ -225,6 +238,7 @@ class DoublyLinkedList:
 
         # if empty DLL
         if not self.head and not self.tail:
+
             return
 
         # decrement if not empty
@@ -238,19 +252,18 @@ class DoublyLinkedList:
         # if the node is the tail
         if self.tail == node:     
 
-            # make the node before the tail into the new tail      
+            # turn the node before the tail into the new tail      
             self.tail = self.tail.prev
 
         # if the node is the head
         elif self.head == node:
 
-            # make the node after the head into the new head
+            # turn the node after the head into the new head
             self.head = self.head.next
         
         # then remove the node
         node.delete()
   
-
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -260,6 +273,7 @@ class DoublyLinkedList:
 
         # if empty DLL, ignore
         if not self.head:
+
             return
 
         # start with the head as the current value
