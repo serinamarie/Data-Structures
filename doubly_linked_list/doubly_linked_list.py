@@ -161,7 +161,7 @@ class DoublyLinkedList:
         # store node for use before removal
         input_node = node.value
 
-        # if the node is the head, do nothing
+        # if the node is the head, leave the head alone!
         if node == self.head:
             return
 
@@ -194,7 +194,7 @@ class DoublyLinkedList:
         # store our node for future use before removal
         input_node = node.value
 
-        # if input node is already the tail, ignore
+        # if input node is already the tail, leave the tail alone!
         if node == self.tail:
             return None
 
@@ -235,18 +235,19 @@ class DoublyLinkedList:
             self.head = None
             self.tail = None
  
-        # if the node is the tail, reset the tail
-        if self.tail == node:           
+        # if the node is the tail
+        if self.tail == node:     
+
+            # make the node before the tail into the new tail      
             self.tail = self.tail.prev
 
-        # if the node is the head, reset the head
+        # if the node is the head
         elif self.head == node:
 
-            # if the head
-            # make the next node the new head
+            # make the node after the head into the new head
             self.head = self.head.next
         
-        # in the end we'll remove the node
+        # then remove the node
         node.delete()
   
 
@@ -257,26 +258,27 @@ class DoublyLinkedList:
     """
     def get_max(self):
 
+        # if empty DLL, ignore
         if not self.head:
             return
 
+        # start with the head as the current value
         current = self.head
 
         # the current node is the maximum, for now
-        maximum = self.head.value
+        maximum = current.value
 
-
-        # while we have a node to look at 
+        # while we can continue to iterate
         while current:
 
             # if the current node is greater than the max
             if current.value > maximum:
 
-                # the current value is the next maximum!
+                # then this node becomes the new maximum!
                 maximum = current.value
 
             # go to the next value
             current = current.next
 
-        # return the maximum value
+        # once all values have been checked, return the maximum value
         return maximum
