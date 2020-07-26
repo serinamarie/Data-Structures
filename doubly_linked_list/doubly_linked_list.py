@@ -42,8 +42,8 @@ class DoublyLinkedList:
         the old head node's previous pointer accordingly.
         """
 
-        # wrap given value in ListNode with its 'next' pointer
-        # at the current head
+        # wrap given value in a ListNode with its 'next' pointing
+        # to the current head
         new_node = ListNode(value, next=self.head)
 
         # increment
@@ -58,10 +58,10 @@ class DoublyLinkedList:
     
         else: 
 
-            # first add the new node before the current head
+            # have the current head's 'prev' pointing to the new node
             self.head.prev = new_node
 
-            # then set the new node to now be the head
+            # then sets the new node to now be the head
             self.head = new_node
 
  
@@ -93,7 +93,7 @@ class DoublyLinkedList:
 
             else:
 
-                # the value before the head is now the new head!
+                # the value after the head is now the new head!
                 self.head = self.head.next
 
             # take a look at our removed head
@@ -107,8 +107,8 @@ class DoublyLinkedList:
         the old tail node's next pointer accordingly.
         """
 
-        # wrap given value in ListNode with its 'prev' pointer
-        # at the current tail
+        # wrap given value in a ListNode with its 'prev' pointing
+        # to the current tail
         new_node = ListNode(value, prev=self.tail)
 
         # increment
@@ -123,7 +123,7 @@ class DoublyLinkedList:
     
         else: 
 
-            # first add the new node after the current tail
+            # have the current tail's 'next' pointing to the new node
             self.tail.next = new_node
 
             # then set the new node to now be the tail
