@@ -42,7 +42,8 @@ class DoublyLinkedList:
         the old head node's previous pointer accordingly.
         """
 
-        # wrap given value in ListNode and insert it as new head
+        # wrap given value in ListNode with its 'next' pointer
+        # at the current head
         new_node = ListNode(value, next=self.head)
 
         # increment
@@ -106,7 +107,8 @@ class DoublyLinkedList:
         the old tail node's next pointer accordingly.
         """
 
-        # wrap given value in ListNode and insert it as new tail
+        # wrap given value in ListNode with its 'prev' pointer
+        # at the current tail
         new_node = ListNode(value, prev=self.tail)
 
         # increment
