@@ -246,7 +246,7 @@ class DoublyLinkedList:
         # decrement if not empty
         self.length -= 1
 
-        # if DLL of length 1
+        # if DLL is just one node
         if self.head == self.tail:
             self.head = None
             self.tail = None
