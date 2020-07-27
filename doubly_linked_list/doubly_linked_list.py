@@ -198,12 +198,12 @@ class DoublyLinkedList:
         # add the stored input_node value to the head 
         self.add_to_head(input_node)
        
-    
-    """
-    Removes the input node from its current spot in the 
-    List and inserts it as the new tail node of the List.
-    """
+
     def move_to_end(self, node):
+ 
+        """Removes the input node from its current spot in the 
+        List and inserts it as the new tail node of the List.
+        """
 
         # store our node for future use before removal
         input_node = node.value
@@ -232,11 +232,11 @@ class DoublyLinkedList:
         self.add_to_tail(input_node)
         
 
-    """
-    Deletes the input node from the List, preserving the 
-    order of the other elements of the List.
-    """
     def delete(self, node):
+
+        """Deletes the input node from the List, preserving the 
+        order of the other elements of the List.
+        """
 
         # if empty DLL
         if not self.head and not self.tail:
@@ -267,11 +267,11 @@ class DoublyLinkedList:
         node.delete()
   
 
-    """
-    Finds and returns the maximum value of all the nodes 
-    in the List.
-    """
     def get_max(self):
+
+        """Finds and returns the maximum value of all the nodes 
+        in the List.
+        """
 
         # if empty DLL, ignore
         if not self.head:
