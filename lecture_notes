@@ -23,3 +23,21 @@ Linked list is composed of many nodes. Nodes are composed of a value and a point
 Queues are FIFO, and stacks ares LIFO
 
 Big O cheatsheet: https://www.bigocheatsheet.com/
+
+
+OOP Analogies:
+
+Encapsulation 
+Each object keeps its state private. Other objects don’t have direct access to this state. 
+You can feed, play with, and have the cat sleep, but you can’t affect its mood, hunger, or energy
+
+Abstraction
+A coffee maker, a few public methods but you don’t see everything under the hood because you
+don't need to 
+
+Inheritance 
+Ability to reuse common logic but also extract unique logic into a separate class
+
+Polymorphism
+The ability to take many shapes. Method overriding. Method used for parent class that we 
+want to use for children.

@@ -293,7 +293,7 @@ class DoublyLinkedList:
                 # then this node becomes the new maximum!
                 maximum = current.value
 
-            # go to the next value
+            # go to the next value (it it's None, the loop will end)
             current = current.next
 
         # once all values have been checked, return the maximum value
