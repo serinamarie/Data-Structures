@@ -20,69 +20,35 @@ class BSTNode:
 
         '''Insert the given value into the tree'''
 
+        # if the input is less than the current value
         if value < self.value:
+
+            # if there is no left child
             if not self.left:
+
+                # insert it!
                 self.left = BSTNode(value)
+            
+            # the input is now the right child!
             else:
+
+                # repeat the process
                 self.left.insert(value)
+
+        # if the input is more than or equal to the current value
         elif value >= self.value:
+
+            # if there is no right child
             if not self.right:
+
+                # the input is now the right child!
                 self.right = BSTNode(value)
+
+            # if there is a right child
             else:
+
+                # repeat the process
                 self.right.insert(value)
-
-        # # if a root with no children
-        # if not self.left and not self.right:
-
-        #     if value == self.value:
-        #         self.value = value
-
-        #     # if the input value is less than the current value
-        #     elif value < self.value:
-
-        #         # make the input value into the left child
-        #         self.left = value
-
-        #     # otherwise if the input value is greater than the current value
-        #     elif value > self.value:
-
-        #         # make the input value into the right child
-        #         self.right = value
-        
-        # # if a root with a child
-        # else:
-
-        #     # begin with the root as the current value
-        #     # (I call it the 'cursor' as a reminder that it only 
-        #     # refers to our location in our search)
-        #     cursor = self.value
-        
-        #     # while we have not reached a leaf (bottom of the tree)
-        #     while self.left or self.right:
-
-        #         # if the input value is less than the cursor
-        #         if value < cursor:
-
-        #             # move our cursor to the left (move down left)
-        #             cursor = self.left
-
-        #             # if that space is vacant
-        #             if cursor == None:
-
-        #                 # set the input value as our new left
-        #                 self.left = value
-
-        #         # if the input value is greater than the cursor
-        #         elif value > cursor: 
-
-        #             # move our cursor to the right (move down right)
-        #             cursor = self.right
-
-        #             # if the space is vacant
-        #             if cursor == None:
-
-        #                 # set the input value as our new right
-        #                 self.right = value
 
 
     def contains(self, target):
@@ -91,41 +57,25 @@ class BSTNode:
         False if it does not.
         """
 
-        # while the current value has children
-        while self.left or self.right:
+        # if the input is the current value        
+        if target == self.value:
 
-            # if the current value is either of the children
-            if self.left == target or self.right == target:
-
-                # exit the loop
-                break
-
-            # if the current value isn't either of the children
-            else:
-
-                #if the target is less than the current value 
-                if target < self.value:
-
-                    # make the left child the new current value
-                    self.value = self.left
-
-                # if the target is greater than the current value
-                else:
-
-                    # make the right child the new current value
-                    self.value = self.right
-
-        # now that the loop is broken, see if the target matches either child
-        if target == self.left or target == self.right:
-
-            # if so return True
+            # it exists in the BST
             return True
 
-        else:
+        # otherwise if the the input is less than the current value
+        elif target < self.value:
 
-            # otherwise return False
-            return False
-            
+            # if 
+            if not self.left:
+                return False
+            else:
+                return self.left.contains(target)
+        elif target >= self.value:
+            if not self.right:
+                return False
+            else:
+                return self.right.contains(target)
 
 
     # Return the maximum value found in the tree
