@@ -29,7 +29,7 @@ class BSTNode:
                 # insert it!
                 self.left = BSTNode(value)
             
-            # the input is now the right child!
+            # if there is already a left child
             else:
 
                 # repeat the process
@@ -44,7 +44,7 @@ class BSTNode:
                 # the input is now the right child!
                 self.right = BSTNode(value)
 
-            # if there is a right child
+            # if there is already a right child
             else:
 
                 # repeat the process
