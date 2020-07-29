@@ -60,27 +60,58 @@ class BSTNode:
         # if the input is the current value        
         if target == self.value:
 
-            # it exists in the BST
+            # it exists in the BST!
             return True
 
         # otherwise if the the input is less than the current value
         elif target < self.value:
 
-            # if 
+            # if there is no left child
             if not self.left:
+
+                # it ain't in this tree
                 return False
+
+            # if there is a left child
             else:
+
+                # recursion (the left child is the new tree root, see if target is in it)
                 return self.left.contains(target)
+
+        # otherwise if the input is greater than or equal to the target
         elif target >= self.value:
+
+            # if there is no right child
             if not self.right:
+
+                # it ain't in this tree
                 return False
+
+            # if there is a right child
             else:
+
+                # recursion (the right child is the new tree root, see if target is in it)
                 return self.right.contains(target)
 
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+
+        # the current value is the max, for now
+        current_max = self.value
+
+        # if there's no value larger than the current value
+        if not self.right:
+
+            # than this value is the biggest :)
+            return current_max
+
+        # if there is a value larger than the current value
+        elif self.right:
+
+            # set the root of the tree to the right child and run 
+            # the new current_max through the function
+            return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
