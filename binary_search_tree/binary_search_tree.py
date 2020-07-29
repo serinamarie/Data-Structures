@@ -115,11 +115,22 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
+
+        # call the function on the input value
         fn(self.value)
+
+        # if there is a left child
         if self.left:
+
+            # run the function through again 
+            # with the left child as the root of the tree
             self.left.for_each(fn)
 
+        # if there is a right child
         if self.right:
+
+            # run the function through again 
+            # with the right child as the root of the tree
             self.right.for_each(fn)
 
     # Part 2 -----------------------
