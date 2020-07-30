@@ -41,3 +41,24 @@ Ability to reuse common logic but also extract unique logic into a separate clas
 Polymorphism
 The ability to take many shapes. Method overriding. Method used for parent class that we 
 want to use for children.
+
+
+Module 4 notes
+
+Breadth-first printing
+- Don't want to search deep. don't want to go down one road, want to 
+cast a wide net
+
+Depth-first printing
+- A maze is a good example
+
+---------------------------
+
+Pre-order traversal
+- print when each is reached (traversed) for the first time
+
+In-order traversal
+- print when each is reached for the second time
+
+Post-order traversal
+- print when each is reached for the third time

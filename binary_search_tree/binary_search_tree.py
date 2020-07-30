@@ -132,22 +132,61 @@ class BSTNode:
             # run the function through again 
             # with the right child as the root of the tree
             self.right.for_each(fn)
+            
+    def delete(self, value):
+        # search like we did in 'contains()'
+        if value == self.value:
+            # if no children
+            if not self.left and not self.right:
+                self.value = None
+            # if two children
+            elif self.left and self.right:
+                self.value = self.right
+            # if one child
+            elif self.left and not self.right:
+                self.value = self.left
+            elif self.right and not self.left:
+                self.value = self.right
+            # if node at bottom level
+                # update parent left/right = NOne
+            # if node has only child
+                # parent.left/right = node.left/right child
+            # if node has two children
+                # if larger child becomes the parent of its sibling
+        elif value < self.value:
+            return self.left.delete(value)
+            pass
+        elif value >= self.value:
+            return self.right.delete(value)
+   
+
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        if self:
+            if self.left:
+                # go left with recursion!
+                self.left.in_order_print()
+            if self.right:
+                # go right with recursion 
+                self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
+        # route finding
+        # don't want to search deep. don't want to go down one road 
+        # forever. 
+
         pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
+        # a maze is a good example
         pass
 
     # Stretch Goals -------------------------
