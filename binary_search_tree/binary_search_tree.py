@@ -9,6 +9,33 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+import sys
+
+sys.path.append('./queue')
+sys.path.append('./singly_linked_list')
+
+from queue import Queue
+
+class Queue:
+    def __init__(self):
+        self.size = 0
+        self.storage = []
+    
+    def __len__(self):
+        return self.size
+
+    def enqueue(self, value):
+        self.storage.insert(0, value)
+        self.size += 1
+
+    def dequeue(self):
+        if self.size == 0:
+            return None
+        else: 
+            self.size -= 1
+            return self.storage.pop()
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -170,24 +197,55 @@ class BSTNode:
             if self.left:
                 # go left with recursion!
                 self.left.in_order_print()
+            print(self.value)
+
             if self.right:
                 # go right with recursion 
                 self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+
+
     def bft_print(self):
+  
         # route finding
         # don't want to search deep. don't want to go down one road 
         # forever. 
+            # instantiate a Queue
+            q = Queue()
+            
+            # insert the value
+            q.enqueue(self)
 
-        pass
+            # while length of q is greater than 0
+            while q.size > 0: 
+
+                # pop off the top
+                front = q.dequeue()
+
+                # print it
+                print(front.value)
+
+                if front.left:
+                    # add left child to queue
+                    q.enqueue(front.left)
+                if front.right:
+                    # add right child to queue
+                    q.enqueue(front.right)
+
+        # while the queue has values in it
+
+        # pop off the top
+        # print it 
+        # if the top has a left, enqueue that one
+        # if the top has a right, enqueue the right
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self):
-        # a maze is a good example
-        pass
+    # def dft_print(self):
+    #     # a maze is a good example
+        # pass
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -214,12 +272,12 @@ bst.insert(4)
 bst.insert(2)
 
 bst.bft_print()
-bst.dft_print()
+# bst.dft_print()
 
-print("elegant methods")
-print("pre order")
-bst.pre_order_dft()
-print("in order")
-bst.in_order_print()
-print("post order")
-bst.post_order_dft()  
+# print("elegant methods")
+# print("pre order")
+# bst.pre_order_dft()
+# print("in order")
+# bst.in_order_print()
+# print("post order")
+# bst.post_order_dft()  
