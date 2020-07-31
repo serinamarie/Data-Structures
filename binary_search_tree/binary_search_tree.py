@@ -258,13 +258,36 @@ class BSTNode:
     # Stretch Goals -------------------------
     # Note: Research may be required
 
-    # Print Pre-order recursive DFT
+    
     def pre_order_dft(self):
-        pass
+
+        # Print Pre-order recursive DFT
+        # Oops, already did this in the function above
+        # But they both have the same output so I'll c/p this
+        
+        if self:
+
+            # print the current value (as it's the first traversal)
+            print(self.value)
+
+        # if there is a left child
+        if self.left:
+
+            # re-run function with left child as root of tree
+            self.left.pre_order_dft()
+
+        # if there is a right child
+        if self.right:
+
+            # re-run function with right child as root of tree
+            self.right.pre_order_dft()
 
     # Print Post-order recursive DFT
     def post_order_dft(self):
-        pass
+
+        # need to sleep on this one 
+
+
 
 """
 This code is necessary for testing the `print` methods
@@ -290,9 +313,9 @@ bst.dft_print()
 
 
 
-# print("elegant methods")
-# print("pre order")
-# bst.pre_order_dft()
+print("elegant methods")
+print("pre order")
+bst.pre_order_dft()
 
-# print("post order")
-# bst.post_order_dft()
+print("post order")
+bst.post_order_dft()
