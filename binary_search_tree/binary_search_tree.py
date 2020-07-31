@@ -10,13 +10,6 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 
-import sys
-
-sys.path.append('./queue')
-sys.path.append('./singly_linked_list')
-
-from queue import Queue
-
 class Queue:
     def __init__(self):
         self.size = 0
@@ -161,7 +154,7 @@ class BSTNode:
             self.right.for_each(fn)
             
     def delete(self, value):
-        # search like we did in 'contains()'
+        # unfinished/untested
         if value == self.value:
             # if no children
             if not self.left and not self.right:
@@ -169,83 +162,98 @@ class BSTNode:
             # if two children
             elif self.left and self.right:
                 self.value = self.right
+
             # if one child
             elif self.left and not self.right:
                 self.value = self.left
-            elif self.right and not self.left:
-                self.value = self.right
-            # if node at bottom level
-                # update parent left/right = NOne
-            # if node has only child
-                # parent.left/right = node.left/right child
-            # if node has two children
-                # if larger child becomes the parent of its sibling
-        elif value < self.value:
-            return self.left.delete(value)
-            pass
-        elif value >= self.value:
-            return self.right.delete(value)
-   
-
+            
 
     # Part 2 -----------------------
 
-    # Print all the values in order from low to high
-    # Hint:  Use a recursive, depth first traversal
+
     def in_order_print(self):
+
+        '''Print all the values in order from low to high
+        Use a recursive, depth first traversal
+        
+        '''
+        # if there is a tree
         if self:
+
+            # if there is a left child
             if self.left:
-                # go left with recursion!
+                # make left child root of tree
                 self.left.in_order_print()
+
+            # print the current root
             print(self.value)
 
+            # if there is a right child
             if self.right:
-                # go right with recursion 
-                self.right.in_order_print()
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative breadth first traversal
+                # make the right child root of tree
+                return self.right.in_order_print()
 
 
     def bft_print(self):
   
-        # route finding
-        # don't want to search deep. don't want to go down one road 
-        # forever. 
-            # instantiate a Queue
-            q = Queue()
-            
-            # insert the value
-            q.enqueue(self)
+        '''Print the value of every node, starting with the given node,
+        in an iterative breadth first traversal
+        '''
+        # instantiate a Queue
+        q = Queue()
+        
+        # insert the value
+        q.enqueue(self)
 
-            # while length of q is greater than 0
-            while q.size > 0: 
+        # while length of q is greater than 0
+        while q.size > 0: 
 
-                # pop off the top
-                front = q.dequeue()
+            # pop off the top
+            front = q.dequeue()
 
-                # print it
-                print(front.value)
+            # print it
+            print(front.value)
 
-                if front.left:
-                    # add left child to queue
-                    q.enqueue(front.left)
-                if front.right:
-                    # add right child to queue
-                    q.enqueue(front.right)
+            # if there is a left child
+            if front.left:
 
-        # while the queue has values in it
+                # add left child to queue
+                q.enqueue(front.left)
 
-        # pop off the top
-        # print it 
-        # if the top has a left, enqueue that one
-        # if the top has a right, enqueue the right
+            # if there is a right child
+            if front.right:
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative depth first traversal
-    # def dft_print(self):
-    #     # a maze is a good example
-        # pass
+                # add right child to queue
+                q.enqueue(front.right)
+
+
+    def dft_print(self):
+
+        '''Print the value of every node, starting with the given node,
+        in an iterative depth first traversal'''
+
+        # a maze is a good example
+        # So, a preorder traversal?! we'll try that
+        
+        # if a tree exists
+        if self:
+
+            # print the current value (as it's the first traversal)
+            print(self.value)
+
+        # if there is a left child
+        if self.left:
+
+            # re-run function with left child as root of tree
+            self.left.dft_print()
+
+        # if there is a right child
+        if self.right:
+
+            # re-run function with right child as root of tree
+            self.right.dft_print()
+
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -271,13 +279,20 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
+print("in_order_print")
+bst.in_order_print()
+
+print("bft_print:")
 bst.bft_print()
-# bst.dft_print()
+
+print("dft_print")
+bst.dft_print()
+
+
 
 # print("elegant methods")
 # print("pre order")
 # bst.pre_order_dft()
-# print("in order")
-# bst.in_order_print()
+
 # print("post order")
-# bst.post_order_dft()  
+# bst.post_order_dft()
